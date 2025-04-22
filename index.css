@@ -2,16 +2,24 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
-    padding: 0;
+    padding: 10px;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+
 }
 
 .editor {
-    margin: 20px auto;
-    max-width: 800px;
-    background-color: #ffffff;
+    background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
 }
 
 .editor label {
@@ -35,10 +43,10 @@ body {
 
 .wrapper {
     max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
+    margin: 30px auto;
+    padding: 50px;
     background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 100px rgba(0, 191, 32, 0.87);
     border-radius: 8px;
 }
 
@@ -84,6 +92,8 @@ button:hover {
 .register a {
     color: #4CAF50;
     text-decoration: none;
+    font-weight: bold;
+
 }
 
 .register a:hover {
