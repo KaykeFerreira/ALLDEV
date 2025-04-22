@@ -12,38 +12,117 @@
         <div class="container">
             <div class="img"></div>
             <div class="img-text">  
-                <p>Alldev</p    >
-                <div><img src="https://scontent.cdninstagram.com/v/t51.2885-19/485681630_4136433266587182_3858687221503648083_n.jpg?stp=cp0_dst-jpg_s110x80_tt6&_nc_cat=107&ccb=1-7&_nc_sid=bf7eb4&_nc_ohc=-v9GH0ETNLYQ7kNvwGEzNrk&_nc_oc=AdmzDkzsd1cwlaYGb5IF3e4S1drk1Vvko3_jJGO_UaQN43sR0Eus99pAn7Xm-kw6P7I&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&oh=00_AfHT9tpjnGdbUIkaSpzlVutbZ-ozCsD7_pfPtj3XQTg1Ew&oe=680D7062" alt="imagem de login" height="50" width="50">
-                            
-    <div class="wrapper">
-        <form id="form-login" action="LoginServlet" method="POST">
-            <h2>Login</h2>
-
-            <div class="input-field">
-                <input type="email" id="email" name="email" required>
-                <label for="email">Digite seu e-mail</label>
+                <p>Alldev</p>
+                <div>
+                    <img src="https://scontent.cdninstagram.com/v/t51.2885-19/485681630_4136433266587182_3858687221503648083_n.jpg?stp=cp0_dst-jpg_s110x80_tt6&_nc_cat=107&ccb=1-7&_nc_sid=bf7eb4&_nc_ohc=-v9GH0ETNLYQ7kNvwGEzNrk&_nc_oc=AdmzDkzsd1cwlaYGb5IF3e4S1drk1Vvko3_jJGO_UaQN43sR0Eus99pAn7Xm-kw6P7I&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&oh=00_AfHT9tpjnGdbUIkaSpzlVutbZ-ozCsD7_pfPtj3XQTg1Ew&oe=680D7062" alt="imagem de login" height="50" width="50">
+                </div>
             </div>
 
-            <div class="input-field">
-                <input type="password" id="senha" name="senha" required>
-                <label for="senha">Digite sua senha</label>
-            </div>
+            <form id="form-login" action="#" method="POST">
+                <h2>Login</h2>
+
+                <div class="input-field">
+                    <input type="email" id="email" name="email" required>
+                    <label for="email">Digite seu e-mail</label>
+                </div>
+
+                <div class="input-field">
+                    <input type="password" id="senha" name="senha" required>
+                    <label for="senha">Digite sua senha</label>
+                </div>
+
+                <div class="forget">
+                    <label>
+                        <input type="checkbox"> Lembrar-me
+                    </label>
+                    <a href="#">Esqueceu a senha?</a>
+                </div>
+
+                <button type="submit">Entrar</button>
+
+                <div class="register">
+                    <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
+                </div>
+            </form>
         </div>
-
-            <div class="forget">
-                <label>
-                    <input type="checkbox"> Lembrar-me
-                </label>
-                <a href="#">Esqueceu a senha?</a>
-            </div>
-
-            <button type="submit">Entrar</button>
-
-            <div class="register">
-                <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
-            </div>
-        </form>
     </div>
+
+     <!-- Script de validação de login -->
+     <script>
+        document.getElementById("form-login").addEventListener("submit", function(e) {
+            e.preventDefault(); // Evita recarregar a página
+            
+            // Obtém os valores dos campos de email e senha
+            // e remove espaços em branco extras
+            const email = document.getElementById("email").value.trim();
+            const senha = document.getElementById("senha").value.trim();
+
+            // Credenciais de login corretos (exemplo)
+            const emailCorreto = "kaykedasilvaferreira09@gmail.com";
+            const senhaCorreta = "alldevFam";
+
+            // Exibe os valores capturados para depuração (remova antes de ir para produção)
+            console.log(`Email digitado: ${email}`);
+            console.log(`Senha digitada: ${senha}`);
+          
+
+            //valida se o email e a senha estão corretos
+            if (email === emailCorreto && senha === senhaCorreta) {
+
+
+                // Armazena o email no localStorage
+                localStorage.setItem("usuariologado", email) 
+                console.log("Usuário logado:", email); // Exibe o email no console para depuração
+                // Exibe uma mensagem de sucesso
+
+                // Redireciona para a página de estoque
+                window.location.href = "estoque.html";
+            } else {
+                // se as credenciais estiverem incorretas, exibe um alerta
+                console.log("Login falhou: Credenciais incorretas.");
+                alert("Email ou senha inválidos. Tente novamente.");
+                return false; // Impede o envio do formulário
+            }
+        });
+    </script>
 
 </body>
 </html>
+
+    <!-- JavaScript para redirecionamento -->
+    <script>
+        document.getElementById("form-login").addEventListener("submit", function(e) {
+            e.preventDefault(); // Evita recarregar a página
+
+            const email = document.getElementById("email").value.trim();
+            const senha = document.getElementById("senha").value.trim();
+
+            // Aqui você pode colocar uma lógica real de verificação
+            if (email !== "" || senha === "") {
+            alert("Preencha todos os campos!");
+            return;
+            }
+
+         // Envia a solicitação para o servlet de login
+    fetch('LoginServlet', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `email=${encodeURIComponent(email)}&senha=${encodeURIComponent(senha)}`
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.text();
+        } else {
+            throw new Error("Credenciais incorretas.");
+        }
+    })
+    .then(message => {
+        alert(message); // Exibe a mensagem do servidor
+        window.location.href = "estoque.html"; // Redireciona para a página de estoque
+    })
+    .catch(error => {
+        alert(error.message); // Exibe mensagem de erro
+    });
+});
