@@ -1,22 +1,55 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.editor {
+    margin: 20px auto;
+    max-width: 800px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.editor label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.editor pre {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 14px;
+    overflow-x: auto; /* Permite rolagem horizontal */
+    white-space: pre-wrap; /* Quebra linhas longas */
+    color: #333;
 }
 
 .wrapper {
     max-width: 400px;
     margin: 50px auto;
-    padding: 50px;
+    padding: 20px;
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
 h2 {
     text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
 .input-field {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .input-field input {
@@ -35,15 +68,24 @@ button {
     color: white;
     font-size: 16px;
     border: none;
-    border-radius: 1px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #a04545;
+    background-color: #45a049;
 }
 
 .register {
     text-align: center;
     font-size: 14px;
+}
+
+.register a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.register a:hover {
+    text-decoration: underline;
 }
