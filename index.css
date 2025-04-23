@@ -1,10 +1,11 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #ffffff;
+    background: linear-gradient(to bottom, #f27136, #d5d5b3, #94b19f); /* degrade suave */
+    display: flex;
     margin: 0;
-    padding: 10px;
-    color: #640c0c;
-    line-height: 1.6;
+    padding: 0px;
+    color: #000000;
+    line-height: 1.05;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,40 +14,25 @@ body {
 
 }
 
-.editor {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: auto;
+.degrade {
+    background: linear-gradient(120deg, #FF6828, #FF6828);
+    background-size: 400% 400%;
+    animation: gradient 5s ease infinite;
+    height: 100px;
+    width: 200px;
+    position: absolute;
+    top: 10;
+    left: 0;
+    z-index: -1;
 }
 
-.editor label {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    display: block;
-}
-
-.editor pre {
-    background-color: #f0f0f0;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: monospace;
-    font-size: 14px;
-    overflow-x: auto; /* Permite rolagem horizontal */
-    white-space: pre-wrap; /* Quebra linhas longas */
-    color: #333;
-}
 
 .wrapper {
-    max-width: 400px;
+    max-width: 500px;
     margin: 30px auto;
     padding: 50px;
-    background-color: white;
-    box-shadow: 0 0 100px rgba(0, 191, 32, 0.87);
+    background-color: #ffffff;
+    box-shadow: 0 0 100px #FFBD9A;
     border-radius: 8px;
 }
 
@@ -54,10 +40,11 @@ h2 {
     text-align: center;
     font-size: 24px;
     margin-bottom: 20px;
+    
 }
 
 .input-field {
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 
 .input-field input {
@@ -72,30 +59,35 @@ h2 {
 button {
     width: 100%;
     padding: 10px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: #646665;
+    color: rgb(255, 255, 255);
     font-size: 16px;
     border: none;
+    font-weight: bold;
+    margin-top: 10px;
     border-radius: 4px;
     cursor: pointer;
 }
 
+
 button:hover {
-    background-color: #45a049;
+    background-color: #000000;
 }
 
 .register {
     text-align: center;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .register a {
-    color: #4CAF50;
+    color: #0000FF;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: none;
+    text-decoration: underline;
 
 }
 
 .register a:hover {
     text-decoration: underline;
 }
+
