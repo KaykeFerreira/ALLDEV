@@ -39,7 +39,20 @@
                     <a href="#">Esqueceu a senha?</a>
                 </div>
 
+                    <div class="forget">
+                    <a href="esqueci-senha.html">Esqueceu a senha?</a> 
+                </div>
+
                 <button type="submit">Entrar</button>
+
+                <div class="register">
+                    <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+                    
+           <button type="submit">Entrar</button>
 
                 <div class="register">
                     <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
@@ -47,6 +60,46 @@
             </form>
         </div>
     </div>
+
+    <!-- Script para login via Servlet -->
+    <script>
+        document.getElementById("form-login").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById("email").value.trim();
+            const senha = document.getElementById("senha").value.trim();
+
+            if (!email || !senha) {
+                alert("Preencha todos os campos!");
+                return;
+            }
+
+            fetch('LoginServlet', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `email=${encodeURIComponent(email)}&senha=${encodeURIComponent(senha)}`
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error("Credenciais incorretas.");
+                }
+            })
+            .then(message => {
+                alert(message);
+                window.location.href = "estoque.html";
+            })
+            .catch(error => {
+                alert(error.message);
+            });
+        });
+    </script>
+</body>
+</html>
+
 
 
      <!-- Script de validação de login -->
