@@ -3,6 +3,41 @@ import javax.servlet.http.*;
 import java.io.*;
 import java.sql.*;
 
+puvlic class CadastroServlet extends HttpServlet {
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/sistema_estoque";
+    private static final String DB_USER = "root"; // seu usuario 
+    private static final String DB_PASS = "senha"; // sua senha
+    
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String email = request.getParameter("email");
+        String senha = request.getParameter("senha");
+
+         if (email == null || senha == null || email.isEmpty() || senha.isEmpty()) {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            response.getWriter().write("Preencha todos os campos.");
+            return;
+        }
+
+        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS)) {
+            String query = "INSERT INTO usuarios (email, senha) VALUES (?, ?)";
+            try (PreparedStatement stmt = conn.prepareStatement(query)) {
+                stmt.setString(1, email);
+                stmt.setString(2, senha);
+                stmt.executeUpdate();
+
+                response.setStatus(HttpServletResponse.SC_OK);
+                response.getWriter().write("Usuário cadastrado com sucesso.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            response.getWriter().write("Erro ao salvar no banco.");
+        }
+    }
+}
+
+        
+
 public class LoginServlet extends HttpServlet {
 
     // Configuração do banco de dados
