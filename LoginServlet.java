@@ -1,7 +1,15 @@
-import javax.servlet.*;
-import javax.servlet.http.*;
-import java.io.*;
-import java.sql.*;
+string url = "database-1.cnwcies6wzwi.us-east-2.rds.amazonaws.com";
+string user = "admin";
+string password = "kaykekayke2020";
+
+Connection conn = DriverManager.getConnection(url, user, password);
+
+String sql = "INSERT INTO produtos (nome, preco, quantidade) VALUES (?, ?, ?)";
+PreparedStatement stmt = conn.prepareStatement(sql);
+stmt.setString(1, nome);
+stmt.setDouble(2, preco);
+stmt.setInt(3, quantidade);
+stmt.executeUpdate();
 
 puvlic class CadastroServlet extends HttpServlet {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/sistema_estoque";
