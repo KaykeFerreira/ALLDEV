@@ -98,9 +98,13 @@
 
     <button onclick="adicionarProduto()">Adicionar</button>
     
-    <form action="estoque" method="post" id="formEstoque">
-  <button type="submit">Salvar no banco</button>
-</form>
+    <action="estoque" method="post" id="formEstoque">
+ <input type="text" id="produto" placeholder="Nome do produto*">
+<input type="number" id="quantidade" placeholder="Quantidade*">
+<input type="number" id="valor" placeholder="Valor unitário (R$)*">
+<button onclick="adicionarProduto()">Adicionar</button>
+
+</action>
 
 
     <table>
