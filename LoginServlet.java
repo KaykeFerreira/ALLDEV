@@ -42,7 +42,7 @@ public class CadastroServlet extends HttpServlet {
 public class LoginServlet extends HttpServlet {
 
     // Configuração do banco de dados
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/sistema_estoque";
+    private static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/sistema_estoque?useSSL=false&serverTimezone=UTC";
     private static final String DB_USER = "root"; // Alterar para o seu usuário
     private static final String DB_PASS = "senha"; // Alterar para sua senha
 
@@ -85,7 +85,7 @@ public class LoginServlet extends HttpServlet {
 
 public class EsqueciSenhaServlet extends HttpServlet {
 
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/sistema_estoque";
+    private static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/sistema_estoque?useSSL=false&serverTimezone=UTC";
     private static final String DB_USER = "root";
     private static final String DB_PASS = "senha";
 
