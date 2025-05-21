@@ -55,6 +55,7 @@
     button:hover {
       background-color: #555;
     }
+    
 
     table {
       width: 100%;
@@ -62,6 +63,7 @@
       margin-top: 20px;
       font-size: 14px;
     }
+    
 
     table th, table td {
       padding: 8px;
@@ -73,14 +75,17 @@
       background-color: #f0f0f0;
     }
 
+    
     .total {
       margin-top: 15px;
       text-align: right;
       font-weight: bold;
     }
+    
   </style>
 </head>
 <body>
+
 
   <div class="painel">
     <h2>Controle de Estoque</h2>
@@ -92,6 +97,14 @@
     </div>
 
     <button onclick="adicionarProduto()">Adicionar</button>
+    
+    <form action="estoque" method="post" id="formEstoque">
+  <input type="text" name="nome" id="produto" placeholder="Nome do produto*" required>
+  <input type="number" name="quantidade" id="quantidade" placeholder="Quantidade*" required>
+  <input type="number" name="preco" id="valor" placeholder="Valor unitário (R$)*" required>
+  <button type="submit">Salvar no banco</button>
+</form>
+
 
     <table>
       <thead>
@@ -107,6 +120,8 @@
         <!-- Itens serão inseridos aqui -->
       </tbody>
     </table>
+
+    
 
     <div class="total" id="valorTotalEstoque">
       Valor Total: R$ 0,00
