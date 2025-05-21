@@ -1,11 +1,9 @@
-<web-app>
-    <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>LoginServlet</servlet-class>
-    </servlet>
+<servlet>
+    <servlet-name>EstoqueServlet</servlet-name>
+    <servlet-class>EstoqueServlet</servlet-class>
+</servlet>
 
-    <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/LoginServlet</url-pattern>
-    </servlet-mapping>
-</web-app>
+<servlet-mapping>
+    <servlet-name>EstoqueServlet</servlet-name>
+    <url-pattern>/estoque</url-pattern>
+</servlet-mapping>
