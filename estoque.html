@@ -55,7 +55,6 @@
     button:hover {
       background-color: #555;
     }
-    
 
     table {
       width: 100%;
@@ -63,7 +62,6 @@
       margin-top: 20px;
       font-size: 14px;
     }
-    
 
     table th, table td {
       padding: 8px;
@@ -75,17 +73,14 @@
       background-color: #f0f0f0;
     }
 
-    
     .total {
       margin-top: 15px;
       text-align: right;
       font-weight: bold;
     }
-    
   </style>
-</head>
+  </head>
 <body>
-
 
   <div class="painel">
     <h2>Controle de Estoque</h2>
@@ -98,7 +93,6 @@
 
     <button onclick="adicionarProduto()">Adicionar</button>
 
-
     <table>
       <thead>
         <tr>
@@ -110,17 +104,14 @@
         </tr>
       </thead>
       <tbody id="tabelaEstoque">
-        <!-- Itens serão inseridos aqui -->
-      </tbody>
+        </tbody>
     </table>
-
-    
 
     <div class="total" id="valorTotalEstoque">
       Valor Total: R$ 0,00
     </div>
   </div>
 
-  <script src="estoque.js"></script>
+  <script type="module" src="estoque_alterado.js"></script>
 </body>
 </html>
