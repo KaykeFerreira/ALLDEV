@@ -77,7 +77,6 @@
 
       firebase.auth().signInWithEmailAndPassword(email, senha)
         .then((userCredential) => {
-          alert("Login realizado com sucesso!");
           window.location.href = "estoque.html";
         })
         .catch((error) => {
