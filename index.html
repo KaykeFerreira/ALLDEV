@@ -1,172 +1,95 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Garante que o site se adapte ao tamanho da tela em dispositivos móveis -->
-    <title>Alldev Web - Login</title>
-    <link rel="stylesheet" href="index.css"> <!-- Link para o arquivo CSS externo -->   
-</head> <!-- Contém informações sobre a página (metadados) -->
-<body> <!-- Contém o conteúdo visível da página -->
-    
-    <div class="wrapper"> <!-- Cria um contêiner para o conteúdo da página -->
-        <div class="container">
-            <div class="img"></div>
-            <div class="img-text">  
-                <div>
-                    <img src="logo.png" alt="imagem de login" height="60" width="70">
-                </div>
-            </div>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alldev Web - Login</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <div class="img"></div>
+      <div class="img-text">
+        <img src="logo.png" alt="imagem de login" height="60" width="70" />
+      </div>
 
-            <form id="form-login" action="#" method="POST">
-                <h2>Login</h2>
+      <form id="form-login">
+        <h2>Login</h2>
 
-                <div class="input-field">
-                    <input type="email" id="email" name="email" required>
-                    <label for="email">Digite seu e-mail</label>
-                </div>
-
-                <div class="input-field">
-                    <input type="password" id="senha" name="senha" required>
-                    <label for="senha">Digite sua senha</label>
-                </div>
-
-                <div class="forget">
-                    <label>
-                        <input type="checkbox"> Lembrar-me
-                    </label>
-  
-
-                    <div class="forget">
-                    <a href="esqueci-senha.html">Esqueceu a senha?</a> 
-                </div>
-
-                    
-           <button type="submit">Entrar</button>
-
-                <div class="register">
-                    <p>Não tem uma conta? <a href="CadastroUsuario.html">Cadastre-se</a></p>
-                </div>
-            </form>
+        <div class="input-field">
+          <input type="email" id="email" required />
+          <label for="email">Digite seu e-mail</label>
         </div>
+
+        <div class="input-field">
+          <input type="password" id="senha" required />
+          <label for="senha">Digite sua senha</label>
+        </div>
+
+        <div class="forget">
+          <label><input type="checkbox" /> Lembrar-me</label>
+          <a href="esqueci-senha.html">Esqueceu a senha?</a>
+        </div>
+
+        <button type="submit">Entrar</button>
+
+        <div class="register">
+          <p>Não tem uma conta? <a href="CadastroUsuario.html">Cadastre-se</a></p>
+        </div>
+      </form>
     </div>
+  </div>
 
-    <!-- Script para login via Servlet -->
-    <script>
-        document.getElementById("form-login").addEventListener("submit", function(e) {
-            e.preventDefault();
+  <!-- Firebase compat SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-compat.js"></script>
 
-            const email = document.getElementById("email").value.trim();
-            const senha = document.getElementById("senha").value.trim();
+  <!-- Inicialização do Firebase -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCJxWjqnfCvfWDmcfjYY7Ho69nUp79slBM",
+      authDomain: "alldevestoque.firebaseapp.com",
+      projectId: "alldevestoque",
+      storageBucket: "alldevestoque.firebasestorage.app",
+      messagingSenderId: "716462776590",
+      appId: "1:716462776590:web:931c1b547797b36a3bb75f",
+      measurementId: "G-40YJ5R47QZ"
+    };
 
-            if (!email || !senha) {
-                alert("Preencha todos os campos!");
-                return;
-            }
+    firebase.initializeApp(firebaseConfig);
+  </script>
 
-            fetch('LoginServlet', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: `email=${encodeURIComponent(email)}&senha=${encodeURIComponent(senha)}`
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.text();
-                } else {
-                    throw new Error("Credenciais incorretas.");
-                }
-            })
-            .then(message => {
-                alert(message);
-                window.location.href = "estoque.html";
-            })
-            .catch(error => {
-                alert(error.message);
-            });
+  <!-- Script de login -->
+  <script>
+    document.getElementById("form-login").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const senha = document.getElementById("senha").value.trim();
+
+      if (!email || !senha) {
+        alert("Preencha todos os campos!");
+        return;
+      }
+
+      firebase.auth().signInWithEmailAndPassword(email, senha)
+        .then((userCredential) => {
+          alert("Login realizado com sucesso!");
+          window.location.href = "estoque.html";
+        })
+        .catch((error) => {
+          console.error("Erro no login:", error);
+          let mensagem = "Erro ao fazer login.";
+          if (error.code === 'auth/user-not-found') {
+            mensagem = "Usuário não encontrado.";
+          } else if (error.code === 'auth/wrong-password') {
+            mensagem = "Senha incorreta.";
+          } else if (error.code === 'auth/invalid-email') {
+            mensagem = "E-mail inválido.";
+          }
+          alert(mensagem);
         });
-    </script>
-</body>
-</html>
-
-
-
-     <!-- Script de validação de login -->
-     <script>
-        document.getElementById("form-login").addEventListener("submit", function(e) {
-            e.preventDefault(); // Evita recarregar a página
-            
-            // Obtém os valores dos campos de email e senha
-            // e remove espaços em branco extras
-            const email = document.getElementById("email").value.trim();
-            const senha = document.getElementById("senha").value.trim();
-
-            // Credenciais de login corretos (exemplo)
-            const emailCorreto = "grupoalldev@gmail.com";
-            const senhaCorreta = "alldevFam";
-
-            // Exibe os valores capturados para depuração (remova antes de ir para produção)
-            console.log(`Email digitado: ${email}`);
-            console.log(`Senha digitada: ${senha}`);
-          
-
-            //valida se o email e a senha estão corretos
-            if (email === emailCorreto && senha === senhaCorreta) {
-
-
-                // Armazena o email no localStorage
-                localStorage.setItem("usuariologado", email) 
-                console.log("Usuário logado:", email); // Exibe o email no console para depuração
-                // Exibe uma mensagem de sucesso
-
-                // Redireciona para a página de estoque
-                window.location.href = "estoque.html";
-            } else {
-                // se as credenciais estiverem incorretas, exibe um alerta
-                console.log("Login falhou: Credenciais incorretas.");
-                alert("Email ou senha inválidos. Tente novamente.");
-                return false; // Impede o envio do formulário
-            }
-        });
-    </script>
-
-</body>
-</html>
-
-    <!-- JavaScript para redirecionamento -->
-    <script>
-        document.getElementById("form-login").addEventListener("submit", function(e) {
-            e.preventDefault(); // Evita recarregar a página
-
-            const email = document.getElementById("email").value.trim();
-            const senha = document.getElementById("senha").value.trim();
-
-            // Aqui você pode colocar uma lógica real de verificação
-            if (email !== "" || senha === "") {
-            alert("Preencha todos os campos!");
-            return;
-            }
-
-         // Envia a solicitação para o servlet de login
-    fetch('LoginServlet', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: `email=${encodeURIComponent(email)}&senha=${encodeURIComponent(senha)}`
-    })
-    .then(response => {
-        if (response.ok) {
-            return response.text();
-        } else {
-            throw new Error("Credenciais incorretas.");
-        }
-    })
-    .then(message => {
-        alert(message); // Exibe a mensagem do servidor
-        window.location.href = "estoque.html"; // Redireciona para a página de estoque
-    })
-    .catch(error => {
-        alert(error.message); // Exibe mensagem de erro
     });
-});
+  </script>
+</body>
+</html>
