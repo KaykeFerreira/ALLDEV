@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alldev Web - Login</title>
-  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
   <div class="wrapper">
     <div class="container">
       <div class="img"></div>
       <div class="img-text">
-        <img src="logo.png" alt="imagem de login" height="60" width="70" />
+        <img src="logo.png" alt="imagem de login" height="60" width="70">
       </div>
 
       <form id="form-login">
         <h2>Login</h2>
 
         <div class="input-field">
-          <input type="email" id="email" required />
+          <input type="email" id="email" required>
           <label for="email">Digite seu e-mail</label>
         </div>
 
         <div class="input-field">
-          <input type="password" id="senha" required />
+          <input type="password" id="senha" required>
           <label for="senha">Digite sua senha</label>
         </div>
 
         <div class="forget">
-          <label><input type="checkbox" /> Lembrar-me</label>
+          <label>
+            <input type="checkbox"> Lembrar-me
+          </label>
           <a href="esqueci-senha.html">Esqueceu a senha?</a>
         </div>
 
@@ -41,8 +43,9 @@
     </div>
   </div>
 
-  <!-- Firebase compat SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-compat.js"></script>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js"></script>
 
   <!-- Inicialização do Firebase -->
   <script>
@@ -59,9 +62,9 @@
     firebase.initializeApp(firebaseConfig);
   </script>
 
-  <!-- Script de login -->
+  <!-- Script de login com Firebase -->
   <script>
-    document.getElementById("form-login").addEventListener("submit", function (e) {
+    document.getElementById("form-login").addEventListener("submit", function(e) {
       e.preventDefault();
 
       const email = document.getElementById("email").value.trim();
@@ -81,11 +84,11 @@
           console.error("Erro no login:", error);
           let mensagem = "Erro ao fazer login.";
           if (error.code === 'auth/user-not-found') {
-            mensagem = "Usuário não encontrado.";
+            mensagem = "Usuário não encontrado. Verifique o e-mail ou cadastre-se.";
           } else if (error.code === 'auth/wrong-password') {
-            mensagem = "Senha incorreta.";
+            mensagem = "Senha incorreta. Tente novamente.";
           } else if (error.code === 'auth/invalid-email') {
-            mensagem = "E-mail inválido.";
+            mensagem = "E-mail inválido. Corrija o formato.";
           }
           alert(mensagem);
         });
