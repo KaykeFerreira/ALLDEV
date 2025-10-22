@@ -1,63 +1,53 @@
-/* Variáveis de cores baseadas na sua última referência (Login) */
-:root {
-    --primary-color: #FF6828; /* Laranja forte (Botões, Destaque) */
-    --secondary-color: #646665; /* Cinza Escuro (Botão Padrão, Títulos de Tabela) */
-    --accent-light-bg: #fff0e3; /* Fundo da caixa de login */
-    --sidebar-bg: #e5e5e5; /* Cinza-claro da Sidebar (Mantido do último ajuste visual) */
-    --content-bg: #f4f4f9; /* Fundo da área de conteúdo (Dashboard Body) */
-    --text-dark: #000000; /* Cor de texto geral */
-}
-
-/* --- Estilos da Página de Login (REMODELADA) --- */
-.login-page {
-    /* Novo fundo do body: Degradê suave */
-    background: linear-gradient(to bottom, #f27136, #d5d5b3, #94b19f); 
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #f27136, #d5d5b3, #94b19f); /* degrade suave */
+    display: flex;
+    margin: 0;
+    padding: 0px;
+    color: #000000;
+    line-height: 1.05;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    padding: 0;
-    margin: 0;
+    text-align: center;
+
 }
 
-.login-container {
-    width: 90%;
-    max-width: 400px; 
+.degrade {
+    background: linear-gradient(120deg, #FF6828, #FF6828);
+    background-size: 400% 400%;
+    animation: gradient 5s ease infinite;
+    height: 100px;
+    width: 200px;
+    position: absolute;
+    top: 10;
+    left: 0;
+    z-index: -1;
+}
+
+
+.wrapper {
+    max-width: 500px;
+    margin: 30px auto;
     padding: 50px;
-    /* Estilos da caixa de login (.wrapper) */
-    background-color: var(--accent-light-bg); 
+    background-color: #fff0e3;
     box-shadow: 0 0 100px #FFBD9A;
     border-radius: 8px;
-    /* Removemos a box-shadow padrão para usar a nova */
 }
 
-.logo-text {
-    font-size: 24px; /* H2 da referência */
-    color: var(--secondary-color);
+h2 {
     text-align: center;
+    font-size: 24px;
     margin-bottom: 20px;
-    font-weight: bold;
+    
 }
 
-/* Escondendo o avatar circular para adotar o visual minimalista do novo login */
-.login-avatar {
-    display: none; 
-}
-.login-form-box {
-    /* Eliminamos a box-shadow dupla, o container já tem o estilo. */
-    background-color: transparent;
-    padding: 0;
-    border-radius: 0;
-    box-shadow: none;
-    border: none;
+.input-field {
+    margin-bottom: 24px;
 }
 
-.form-label {
-    font-weight: bold;
-    color: var(--text-dark);
-}
-
-.form-control {
+.input-field input {
     width: 100%;
     padding: 10px;
     font-size: 16px;
@@ -66,177 +56,37 @@
     border-radius: 4px;
 }
 
-/* Estilo do botão (cor Cinza Escuro) */
-.btn-login {
-    background-color: var(--secondary-color);
-    border-color: var(--secondary-color);
-    color: white;
-    font-weight: bold;
-    padding: 10px;
-    margin-top: 10px;
-    transition: background-color 0.3s;
+button {
     width: 100%;
+    padding: 10px;
+    background-color: #646665;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    border: none;
+    font-weight: bold;
+    margin-top: 10px;
     border-radius: 4px;
+    cursor: pointer;
 }
 
-.btn-login:hover {
-    background-color: #000000; 
-    border-color: #000000;
-    color: white;
+
+button:hover {
+    background-color: #000000;
 }
 
-/* Estilos de Registro (Se aplicável) */
 .register {
     text-align: center;
     font-size: 15px;
-    margin-top: 15px;
 }
 
 .register a {
     color: #0000FF;
+    text-decoration: none;
+    font-weight: none;
     text-decoration: underline;
+
 }
 
 .register a:hover {
     text-decoration: underline;
-}
-
-/* --- Estilos para o Dashboard e páginas internas --- */
-.dashboard-page {
-    background-color: var(--content-bg); 
-}
-
-#wrapper {
-    display: flex;
-}
-
-/* SIDEBAR: Fundo claro (Mantido o último ajuste) */
-#sidebar-wrapper {
-    min-height: 100vh;
-    width: 250px; 
-    background-color: var(--sidebar-bg); 
-    color: var(--text-dark); 
-    border-right: 1px solid #c8c8c8; 
-}
-
-.sidebar-heading {
-    padding: 1.5rem 1.25rem;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--secondary-color); 
-    text-align: center;
-    border-bottom: 1px solid #c8c8c8; 
-}
-
-/* Links da Sidebar */
-.list-group-item {
-    border: none !important;
-    background-color: transparent !important;
-    color: var(--text-dark) !important; 
-    padding: 0.75rem 1.25rem !important;
-    transition: background-color 0.2s, color 0.2s;
-    font-weight: 500;
-}
-
-.list-group-item:hover {
-    background-color: #dcdcdc !important; 
-    color: var(--primary-color) !important; 
-    font-weight: 600; 
-}
-
-/* MENU ATIVO: Laranja forte (Nova cor primária) */
-.active-menu {
-    background-color: var(--primary-color) !important; 
-    color: white !important; 
-    font-weight: 600; 
-    border-radius: 0.25rem; 
-    margin: 0.5rem 0.75rem; 
-    padding: 0.75rem 1.25rem !important; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
-}
-
-.active-menu:hover {
-    background-color: var(--primary-color) !important; 
-    color: white !important;
-}
-
-#page-content-wrapper {
-    min-width: calc(100% - 250px); 
-    background-color: var(--content-bg);
-    flex-grow: 1;
-}
-
-/* NAVBAR SUPERIOR: Verde Escuro (Nova cor secundária) */
-.navbar {
-    background-color: var(--secondary-color) !important; 
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-    padding: 1rem; 
-}
-
-.navbar-text {
-    color: white !important; 
-}
-
-.navbar h5 {
-    color: white !important; 
-}
-
-.user-avatar-small {
-    /* Mantido Laranja para contraste */
-    background-color: var(--primary-color);
-    color: white;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 0.9rem;
-}
-
-/* Estilo para os cards de Ações Rápidas */
-.action-card {
-    border: 1px solid #ddd;
-    border-left: 5px solid var(--primary-color); /* Borda laranja forte */
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
-    background-color: white;
-    border-radius: 0.5rem;
-}
-
-.action-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-}
-
-.card-title {
-    color: var(--text-dark);
-}
-
-.card-text {
-    color: #6c757d; 
-}
-
-.sidebar-footer {
-    position: sticky; 
-    bottom: 0;
-    width: 100%;
-    border-top: 1px solid #c8c8c8; 
-    background-color: var(--sidebar-bg); 
-    padding-top: 0.5rem; 
-    padding-bottom: 0.5rem;
-}
-
-.sidebar-footer .list-group-item {
-    font-size: 0.9rem; 
-}
-
-/* Estilos para Tabela */
-.table-dark-custom {
-    background-color: var(--secondary-color) !important; /* Cinza Escuro */
-    color: white !important;
-}
-.table-dark-custom th {
-    border-color: rgba(255, 255, 255, 0.2) !important;
 }
