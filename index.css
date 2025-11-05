@@ -90,39 +90,30 @@ button:hover {
 .register a:hover {
     text-decoration: underline;
 }
-/* Estilos para telas menores (celular) */
+
+/* Celular */  
 @media (max-width: 768px) {
-    body {
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: stretch;
-        height: auto;
-        text-align: left;
-        padding: 10px;
-    }
-
-    .wrapper {
-        width: 90%;
-        max-width: none;
-        margin: 20px auto;
-        padding: 20px;
-        box-shadow: none;
-        border-radius: 4px;
-    }
-
-    .degrade {
-        height: 80px;
-        width: 100%;
+    .sidebar {
+        position: fixed;
         top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100%;
+        background-color: #FF6828;
+        transition: left 0.3s ease;
+        z-index: 1000;
+    }
+
+    .sidebar.active {
         left: 0;
     }
 
-    button {
-        font-size: 14px;
-        padding: 12px;
-    }
-
-    h2 {
-        font-size: 20px;
+    .menu-toggle {
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 1100;
     }
 }
