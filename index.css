@@ -91,29 +91,3 @@ button:hover {
     text-decoration: underline;
 }
 
-/* Celular */  
-@media (max-width: 768px) {
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: -250px;
-        width: 250px;
-        height: 100%;
-        background-color: #FF6828;
-        transition: left 0.3s ease;
-        z-index: 1000;
-    }
-
-    .sidebar.active {
-        left: 0;
-    }
-
-    .menu-toggle {
-        position: fixed;
-        top: 15px;
-        left: 15px;
-        font-size: 24px;
-        cursor: pointer;
-        z-index: 1100;
-    }
-}
