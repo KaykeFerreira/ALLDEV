@@ -90,3 +90,39 @@ button:hover {
 .register a:hover {
     text-decoration: underline;
 }
+/* Estilos para telas menores (celular) */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        height: auto;
+        text-align: left;
+        padding: 10px;
+    }
+
+    .wrapper {
+        width: 90%;
+        max-width: none;
+        margin: 20px auto;
+        padding: 20px;
+        box-shadow: none;
+        border-radius: 4px;
+    }
+
+    .degrade {
+        height: 80px;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}
